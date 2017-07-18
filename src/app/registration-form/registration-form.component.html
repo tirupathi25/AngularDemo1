@@ -1,0 +1,58 @@
+<div id="signindiv">
+  <h1>SignIn Form</h1>
+  <hr/>
+  <form >
+    <label for="lemail">Email</label>
+    <input type="text" id="lname" name="email" placeholder="Your email..">
+
+    <label for="psw">Pasword</label>
+    <input type="password" id="lname" name="password" placeholder="Your password..">
+    <input type="submit" value="SignIn">
+  </form>
+</div>
+<div id="registerdiv">
+  <h1>Registration Form</h1>
+  <hr/>
+  <form #registerForm="ngForm" (ngSubmit)="submitRegisterForm(registerForm.value)" novalidate>
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" required #nameRef = "ngModel" minlength="4" maxlength="10" placeholder="Your first name.." ngModel>
+    <!--<div [hidden] = "nameRef.valid || nameRef.pristine">Please enter valid name</div>-->
+      <div *ngIf="nameRef.errors && (nameRef.touched || nameRef.dirty)">
+          <div [hidden] = "!nameRef.errors.required">Please enter valid name</div>
+          <div [hidden] = "!nameRef.errors.minlength">Please enter atleast 4 characters</div>
+          <div [hidden] = "!nameRef.errors.maxlength">Maximum length 10 characters</div>
+      </div>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." ngModel>
+    
+    <label for="lemail">Email</label>
+    <input type="text" id="lname" name="email" placeholder="Your email.." ngModel>
+    
+    <label for="pnumber">Phone Number</label>
+    <input type="text" id="lname" name="phonenumber" placeholder="Your phone number.." ngModel>
+
+    <label for="psw">Pasword</label>
+    <input type="password" id="lname" name="password" placeholder="Your password.." ngModel>
+
+    <label for="cpsw">Conf Pasword</label>
+    <input type="password" id="lname" name="confpassword" placeholder="Your conf password.." ngModel>
+    <div ngModelGroup="address">  
+        <label for="faddress">Address</label>
+        <input type="text" id="fname" name="address" placeholder="Your Address.." ngModel>
+
+        <label for="fcity">City</label>
+        <input type="text" id="fcity" name="city" placeholder="Your City.." ngModel>
+        
+        <label for="fzipcode">Zip Code</label>
+        <input type="text" id="fzipcode" #pincode="ngModel" pattern="^[1-9][0-9]{4}$" name="zipcode" placeholder="Your Zip code.." ngModel>
+    <div *ngIf="pincode.errors && (pincode.dirty || pincode.touched)">
+      <div [hidden]="!pincode.errors.pattern">Please Enter 5 digit number</div>
+
+    </div>
+    </div>
+     
+
+    <input [disabled]="!registerForm.form.valid" type="submit" value="Submit">
+  </form>
+</div>

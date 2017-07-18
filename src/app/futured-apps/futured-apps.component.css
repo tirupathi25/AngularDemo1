@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    text-align: left; 
+    width:20%;   
+}
+td{
+    text-align:justify 
+}

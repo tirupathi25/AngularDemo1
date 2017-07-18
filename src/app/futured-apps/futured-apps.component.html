@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th >Image</th>
+            <th>Name</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of apps">
+            <td><img [src] = 'data["im:image"][0].label' ></td>
+            <td>{{data["im:name"].label}}</td>
+            <td>{{data.summary.label}}</td>
+        </tr>
+    </tbody>
+</table>
